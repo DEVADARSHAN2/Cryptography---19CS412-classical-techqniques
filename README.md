@@ -104,7 +104,7 @@ int main() {
 
 
 ## RESULT:
-The program is executed successfully
+The program for Caeser Cipher is executed successfully
 
 ---------------------------------
 
@@ -317,7 +317,7 @@ int main() {
 
 
 ## RESULT:
-The program is executed successfully
+The program for PlayFair Cipher is executed successfully
 
 
 ---------------------------
@@ -445,7 +445,7 @@ int main() {
 
 
 ## RESULT:
-The program is executed successfully
+The program for Hill Cipher is executed successfully
 
 -------------------------------------------------
 
@@ -557,7 +557,7 @@ void decipher() {
 ![Screenshot 2024-09-02 091533](https://github.com/user-attachments/assets/496f1917-e344-4440-b313-55d777715c7a)
 
 ## RESULT:
-The program is executed successfully
+The program for Vigenere Cipher is executed successfully
 
 -----------------------------------------------------------------------
 
@@ -646,4 +646,4 @@ int main() {
 ![Screenshot 2024-09-02 091700](https://github.com/user-attachments/assets/d48ff5ed-377b-4ee1-8693-f71fc81b294d)
 
 ## RESULT:
-The program is executed successfully
+The program for Rail Fence Cipher is executed successfully
