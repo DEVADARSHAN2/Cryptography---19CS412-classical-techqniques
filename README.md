@@ -97,7 +97,7 @@ int main() {
     return 0;
 }
 
-
+```
 
 ## OUTPUT:
 ![Screenshot 2024-09-02 090040](https://github.com/user-attachments/assets/1f0ff86c-fa76-4866-b778-23d7981c71d3)
@@ -146,7 +146,7 @@ To decrypt, use the INVERSE (opposite) of the last 3 rules, and the 1st as-is (d
 
 
 ## PROGRAM:
-
+```
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -311,7 +311,7 @@ int main() {
 
     return 0;
 }
-
+```
 ## OUTPUT:
 ![Screenshot 2024-09-02 090324](https://github.com/user-attachments/assets/600d6d15-fc51-4ed5-a699-97f09de65458)
 
@@ -349,6 +349,7 @@ The cipher can, be adapted to an alphabet with any number of letters. All arithm
 
 
 ## PROGRAM:
+```
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>  // Include the necessary header for toupper()
@@ -438,6 +439,7 @@ int main() {
     
     return 0;
 }
+```
 ## OUTPUT:
 ![Screenshot 2024-09-02 091430](https://github.com/user-attachments/assets/628dca15-6e2d-47de-bea3-a02cb98b638e)
 
@@ -473,6 +475,7 @@ The Vigenere cipher is a method of encrypting alphabetic text by using a series 
 
 
 ## PROGRAM:
+```
 #include <stdio.h>
 #include <stdlib.h>  // For exit() function
 #include <ctype.h>   // For toupper() function
@@ -548,7 +551,7 @@ void decipher() {
     }
     printf("\n");  // Added newline for output formatting
 }
-
+```
 
 ## OUTPUT:
 ![Screenshot 2024-09-02 091533](https://github.com/user-attachments/assets/496f1917-e344-4440-b313-55d777715c7a)
@@ -582,6 +585,7 @@ ALGORITHM DESCRIPTION:
 In the rail fence cipher, the plaintext is written downwards and diagonally on successive "rails" of an imaginary fence, then moving up when we reach the bottom rail. When we reach the top rail, the message is written downwards again until the whole plaintext is written out. The message is then read off in rows.
 
 ## PROGRAM:
+```
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -637,7 +641,7 @@ int main() {
 
     return 0;
 }
-
+```
 ## OUTPUT:
 ![Screenshot 2024-09-02 091700](https://github.com/user-attachments/assets/d48ff5ed-377b-4ee1-8693-f71fc81b294d)
 
