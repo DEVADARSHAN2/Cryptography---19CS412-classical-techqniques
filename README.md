@@ -30,6 +30,7 @@ Implementation using C or pyhton code
 
 
 ## PROGRAM:
+```
 #include <stdio.h>
 #include <string.h>
 
