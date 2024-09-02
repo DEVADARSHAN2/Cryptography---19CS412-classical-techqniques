@@ -270,6 +270,26 @@ void encrypt(char str[], char keyT[5][5], int ps) {
     }
 }
 
+// Function for performing the decryption
+void decrypt(char str[], char keyT[5][5], int ps) {
+    int i, a[4];
+
+    for (i = 0; i < ps; i += 2) {
+        search(keyT, str[i], str[i + 1], a);
+        
+        if (a[0] == a[2]) {  // Same row
+            str[i] = keyT[a[0]][mod5(a[1] - 1 + 5)];
+            str[i + 1] = keyT[a[0]][mod5(a[3] - 1 + 5)];
+        } else if (a[1] == a[3]) {  // Same column
+            str[i] = keyT[mod5(a[0] - 1 + 5)][a[1]];
+            str[i + 1] = keyT[mod5(a[2] - 1 + 5)][a[1]];
+        } else {  // Rectangle swap
+            str[i] = keyT[a[0]][a[3]];
+            str[i + 1] = keyT[a[2]][a[1]];
+        }
+    }
+}
+
 // Function to encrypt using Playfair Cipher
 void encryptByPlayfairCipher(char str[], char key[]) {
     int ps, ks;
@@ -293,11 +313,34 @@ void encryptByPlayfairCipher(char str[], char key[]) {
     encrypt(str, keyT, ps);
 }
 
+// Function to decrypt using Playfair Cipher
+void decryptByPlayfairCipher(char str[], char key[]) {
+    int ps, ks;
+    char keyT[5][5];
+
+    // Key
+    ks = strlen(key);
+    ks = removeSpaces(key, ks);
+    toLowerCase(key, ks);
+
+    // Ciphertext
+    ps = strlen(str);
+    toLowerCase(str, ps);
+    ps = removeSpaces(str, ps);
+    ps = prepare(str, ps);
+
+    // Generate key square
+    generateKeyTable(key, ks, keyT);
+
+    // Decrypt the ciphertext
+    decrypt(str, keyT, ps);
+}
+
 // Driver code
 int main() {
     char str[SIZE], key[SIZE];
 
-    // Key to be encrypted
+    // Key to be used
     strcpy(key, "SAVEETHA");
     printf("Key text: %s\n", key);
 
@@ -309,11 +352,17 @@ int main() {
     encryptByPlayfairCipher(str, key);
     printf("Cipher text: %s\n", str);
 
+    // Decrypt using Playfair Cipher
+    decryptByPlayfairCipher(str, key);
+    printf("Decrypted text: %s\n", str);
+
     return 0;
 }
+
+
 ```
 ## OUTPUT:
-![Screenshot 2024-09-02 090324](https://github.com/user-attachments/assets/600d6d15-fc51-4ed5-a699-97f09de65458)
+![Screenshot 2024-09-02 105941](https://github.com/user-attachments/assets/cced2f65-e5a5-4782-bd78-3050a861a927)
 
 
 ## RESULT:
