@@ -637,62 +637,71 @@ In the rail fence cipher, the plaintext is written downwards and diagonally on s
 ```
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
+
+void encrypt(char message[], int shift) {
+    char ch;
+    for (int i = 0; message[i] != '\0'; ++i) {
+        ch = message[i];
+        if (ch >= 'a' && ch <= 'z') {
+            ch = ch + shift;
+            if (ch > 'z') {
+                ch = ch - 'z' + 'a' - 1;
+            }
+            message[i] = ch;
+        } else if (ch >= 'A' && ch <= 'Z') {
+            ch = ch + shift;
+            if (ch > 'Z') {
+                ch = ch - 'Z' + 'A' - 1;
+            }
+            message[i] = ch;
+        }
+    }
+    printf("Encrypted message: %s\n", message);
+}
+
+void decrypt(char message[], int shift) {
+    char ch;
+    for (int i = 0; message[i] != '\0'; ++i) {
+        ch = message[i];
+        if (ch >= 'a' && ch <= 'z') {
+            ch = ch - shift;
+            if (ch < 'a') {
+                ch = ch + 'z' - 'a' + 1;
+            }
+            message[i] = ch;
+        } else if (ch >= 'A' && ch <= 'Z') {
+            ch = ch - shift;
+            if (ch < 'A') {
+                ch = ch + 'Z' - 'A' + 1;
+            }
+            message[i] = ch;
+        }
+    }
+    printf("Decrypted message: %s\n", message);
+}
 
 int main() {
-    int i, j, len, rails, count;
-    char str[1000];
-    int code[100][1000]; 
+    char message[100];
+    int shift;
 
-    printf("Enter a Secret Message: ");
-    fgets(str, sizeof(str), stdin);  
-    str[strcspn(str, "\n")] = '\0'; 
+    printf("Enter a message: ");
+    gets(message);  // reads a line of text
 
-    len = strlen(str);
+    printf("Enter shift amount: ");
+    scanf("%d", &shift);
 
-    printf("Enter number of rails: ");
-    scanf("%d", &rails);
+    // Make a copy of the message to decrypt later
+    char encrypted_message[100];
+    strcpy(encrypted_message, message);
 
-    for (i = 0; i < rails; i++) {
-        for (j = 0; j < len; j++) {
-            code[i][j] = 0;
-        }
-    }
-
-    count = 0;  
-    j = 0;      
-
-    while (j < len) {
-        if (count % 2 == 0) {
-            for (i = 0; i < rails && j < len; i++) {
-                code[i][j] = (int)str[j]; 
-                j++;
-            }
-        } else {
-            for (i = rails - 2; i > 0 && j < len; i--) {
-                code[i][j] = (int)str[j]; 
-                j++;
-            }
-        }
-        count++;
-    }
-
- 
-    printf("\nEncrypted Message: ");
-    for (i = 0; i < rails; i++) {
-        for (j = 0; j < len; j++) {
-            if (code[i][j] != 0) {
-                printf("%c", code[i][j]);
-            }
-        }
-    }
-    printf("\n");
+    encrypt(encrypted_message, shift);
+    decrypt(encrypted_message, shift);
 
     return 0;
 }
 ```
 ## OUTPUT:
-![Screenshot 2024-09-02 091700](https://github.com/user-attachments/assets/d48ff5ed-377b-4ee1-8693-f71fc81b294d)
+![Screenshot 2024-09-02 112318](https://github.com/user-attachments/assets/744abdbc-ab9c-4bab-9a02-30f6d0bc57cf)
 
 ## RESULT:
 The program for Rail Fence Cipher is executed successfully.
